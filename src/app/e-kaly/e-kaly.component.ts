@@ -17,11 +17,12 @@ export class EKalyComponent implements OnInit {
     let item = JSON.parse(localStorage.getItem("token_client"));
     if(!item)
     {
-      //this.route.navigateByUrl("/Login");
+      this.route.navigateByUrl("/Login");
     }
     else{
       if(item["profil"]!="client")
       {
+        localStorage.removeItem("token_admin");
         this.route.navigateByUrl("/Login");
         this.user.logout("token_client");
       }

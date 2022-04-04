@@ -1,3 +1,4 @@
+const compression = require('compression');
 // Use Express
 var express = require("express");
 // Use body-parser
@@ -14,6 +15,7 @@ var PRODUCTS_COLLECTION = "products";
 // Create new instance of the express server
 var app = express();
 const path=require("path");
+app.use(compression());
 
 // Define the JSON parser as a default way 
 // to consume and produce data through the 

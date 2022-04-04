@@ -1,0 +1,58 @@
+<header>
+    <!-- Navbar -->
+   
+    <!-- Navbar -->
+  
+    <!-- Jumbotron -->
+    <div class="p-5 text-center bg-light" style="background-image: url('./assets/images/heads.jpg');">
+      <h1 class="mb-3" style="color: White;">E-Kaly</h1>
+      <h4 class="mb-3"style="color: White;"></h4>
+    </div>
+    <!-- Jumbotron -->
+  </header>
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@2.0.7/css/boxicons.min.css">
+
+<div class="container">
+    <h1>Restaurants</h1>
+    <p>{{rest_message}}</p>
+<div class="row row-cols-1 row-cols-lg-2 row-cols-xl-4" *ngIf="restos.length > 0" >
+    
+	<div *ngFor="let resto of restos" class="col">
+		<div class="card radius-15">
+			<div class="card-body text-center">
+				<div class="p-4 border radius-15">
+					<img src="./assets/images/icon_resto.png" width="110" height="110" class="rounded-circle shadow" alt="">
+					<h5 class="mb-0 mt-5">{{resto.nom}}</h5>
+					<p class="mb-3">{{resto.email}}</p>
+					<div class="list-inline contacts-social mt-3 mb-3"> <a href="javascript:;" class="list-inline-item bg-facebook text-white border-0"><i class="bx bxl-facebook"></i></a>
+						<a href="javascript:;" class="list-inline-item bg-twitter text-white border-0"><i class="bx bxl-twitter"></i></a>
+						<a href="javascript:;" class="list-inline-item bg-linkedin text-white border-0"><i class="bx bxl-linkedin"></i></a>
+					</div>
+					<div *ngIf="isAdmin=='oui'">
+						<div class="d-grid"> <a href="/e-kaly-admin/restaurant/{{resto.nom}}" class="btn btn-outline-primary radius-15">Voir </a></div>
+						<button  (click)="delete_ekaly_resto(resto.email,resto.nom)" mdbBtn type="button" color="pink" mdbWavesEffect >Supprimer</button>
+					</div>
+					<div *ngIf="isAdmin=='non'">
+						<div class="d-grid"> <a href="/e-kaly/restaurant/{{resto.nom}}" class="btn btn-outline-primary radius-15">Voir </a></div>
+					</div>
+
+				
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+
+</div>
+</div>

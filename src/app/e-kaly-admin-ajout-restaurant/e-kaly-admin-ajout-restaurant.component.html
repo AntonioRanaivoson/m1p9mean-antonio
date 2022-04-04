@@ -1,0 +1,119 @@
+
+
+<section class="text-center text-lg-start" style="background-image: linear-gradient(120deg, #a6c0fe 0%, #f68084 100%);">
+    <style>
+      .cascading-right {
+        margin-right: -50px;
+      }
+      @media (max-width: 991.98px) {
+        .cascading-right {
+          margin-right: 0;
+        }
+      }
+    </style>
+  
+   <h3 style="color: white;">Nouveau Resto</h3>
+    <!-- Jumbotron -->
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="row g-0 align-items-center">
+        <div class="col-lg-6 mb-5 mb-lg-0"  style="padding-top: 10px;margin-top: 60px;">
+          <div
+               class="card cascading-right"
+               style="
+                      background: hsla(0, 0%, 100%, 0.55);
+                      backdrop-filter: blur(30px);
+                      "
+               >
+            <div class="card-body p-5 shadow-5 text-center">
+              <h2 class="fw-bold mb-5">Nouveau restaurant</h2>
+              <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+                <!-- 2 column grid layout with text inputs for the first and last names -->
+                <div class="row">
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                      <input
+                            [(ngModel)]="nom"
+                             type="text"
+                             id="form3Example1"
+                             class="form-control"
+                             formControlName="nom"
+                             />
+                      <label class="form-label" for="form3Example1"
+                             >Nom</label
+                        >
+                    </div>
+                  </div>
+                </div>
+   
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                  <input
+                        
+                         type="email"
+                         id="form3Example3"
+                         class="form-control"
+                         formControlName="email"
+                         required
+                         />
+                  <label class="form-label" for="form3Example3"
+                         >Adresse email</label
+                    >
+                </div>
+   
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                  <input
+                        [(ngModel)]="mdp"
+                         type="password"
+                         id="form3Example4"
+                         class="form-control"
+                         formControlName="mdp"
+                         />
+                  <label class="form-label" for="form3Example4"
+                         >Mot de passe</label
+                    >
+                </div>
+   
+                <!-- Checkbox -->
+                <div class="form-check d-flex justify-content-center mb-4">
+                <h3 style="color:{{col}};"> {{message}} </h3>
+                </div>
+   
+                <!-- Submit button -->
+                <button
+                        type="submit"
+                        class="btn btn-primary btn-block mb-4"
+                        [disabled]="!userForm.valid"
+                        >
+                 S'inscrire
+                </button>
+
+               
+   
+              </form>
+            </div>
+          </div>
+        </div>
+       
+   
+        <div class="col-lg-6 mb-5 mb-lg-0"  style="padding-top: 20px;margin-top: 60px;">
+            <h1 style="color: white;">E-Kaly</h1>
+          <img
+               src="./assets/images/fond.png"
+               class="w-100 rounded-4 shadow-4"
+               alt=""
+               />
+               
+        </div>
+      </div>
+      </div>
+    </div>
+    <!-- Jumbotron -->
+
+   
+
+ 
+
+   </section>
+   <!-- Section: Design Block -->

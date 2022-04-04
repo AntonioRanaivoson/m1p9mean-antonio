@@ -37,6 +37,7 @@ export class ProductListComponent implements OnInit, OnChanges {
       .get()
       .then((result: Array<IProduct>) => {
         this.products = result;
+        console.log(this.products);
       });
   }
 

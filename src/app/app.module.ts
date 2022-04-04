@@ -1,25 +1,57 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Compiler } from '@angular/core';
-
-import { AppRoutingModule } from './app-routing.module';
+import { CommonModule } from '@angular/common';  
+import { AppRoutingModule,routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpModule } from '@angular/http';
 import { ProductListComponent } from './product/product-list/product-list.component';
 import { ProductCreateComponent } from './product/product-create/product-create.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { InscriptionComponent } from './inscription/inscription.component';
+import { RestaurantsComponent } from './restaurants/restaurants.component';
+import { EKalyComponent } from './e-kaly/e-kaly.component';
+import { RestaurantsPlatsComponent } from './restaurants-plats/restaurants-plats.component';
+import { RestaurantsAjoutPlatComponent } from './restaurants-ajout-plat/restaurants-ajout-plat.component';
+import { RestaurantsCommandesComponent } from './restaurants-commandes/restaurants-commandes.component';
+import {HttpClientModule} from '@angular/common/http';
+import { EKalyRestaurantComponent } from './e-kaly-restaurant/e-kaly-restaurant.component';
+import { EKalyRestaurantPlatsComponent } from './e-kaly-restaurant-plats/e-kaly-restaurant-plats.component';
+import { EKalyAdminComponent } from './e-kaly-admin/e-kaly-admin.component';
+import { EKalyAdminAjoutRestaurantComponent } from './e-kaly-admin-ajout-restaurant/e-kaly-admin-ajout-restaurant.component';
+import { EKalyAdminRestaurantComponent } from './e-kaly-admin-restaurant/e-kaly-admin-restaurant.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductListComponent,
-    ProductCreateComponent
+    ProductCreateComponent,
+    LoginComponent,
+    routingComponents,
+    InscriptionComponent,
+    RestaurantsComponent,
+    EKalyComponent,
+    RestaurantsPlatsComponent,
+    RestaurantsAjoutPlatComponent,
+    RestaurantsCommandesComponent,
+    EKalyRestaurantComponent,
+    EKalyRestaurantPlatsComponent,
+    EKalyAdminComponent,
+    EKalyAdminAjoutRestaurantComponent,
+    EKalyAdminRestaurantComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MDBBootstrapModule.forRoot(),
+    NoopAnimationsModule,
+    HttpClientModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

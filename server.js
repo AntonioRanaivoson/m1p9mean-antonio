@@ -13,6 +13,7 @@ var PRODUCTS_COLLECTION = "products";
 
 // Create new instance of the express server
 var app = express();
+const path=require("path");
 
 // Define the JSON parser as a default way 
 // to consume and produce data through the 

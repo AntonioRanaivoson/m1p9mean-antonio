@@ -26,7 +26,7 @@ app.use(bodyParser.json());
 var distDir = __dirname + "/dist/node-express-angular/";
 app.use(express.static(distDir));
 
-app.get('/Login',(req,res)=>res.sendFile(path.join(__dirname,'../../dist/node-express-angular')));
+app.get('/Login',(req,res)=>res.sendFile(path.join(__dirname,'../../dist/node-express-angular/index.html')));
 
 // Local database URI.
 const LOCAL_DATABASE = "mongodb+srv://tonio:1234@cluster0.ssolc.mongodb.net/e-kaly";

@@ -22,6 +22,7 @@ import { EKalyRestaurantPlatsComponent } from './e-kaly-restaurant-plats/e-kaly-
 import { EKalyAdminComponent } from './e-kaly-admin/e-kaly-admin.component';
 import { EKalyAdminAjoutRestaurantComponent } from './e-kaly-admin-ajout-restaurant/e-kaly-admin-ajout-restaurant.component';
 import { EKalyAdminRestaurantComponent } from './e-kaly-admin-restaurant/e-kaly-admin-restaurant.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { EKalyAdminRestaurantComponent } from './e-kaly-admin-restaurant/e-kaly-
     MDBBootstrapModule.forRoot(),
     NoopAnimationsModule,
     HttpClientModule,
-    CommonModule
+    CommonModule,
+    NgxPaginationModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

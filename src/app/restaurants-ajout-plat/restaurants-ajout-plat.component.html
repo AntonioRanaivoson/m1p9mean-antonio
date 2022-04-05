@@ -1,30 +1,32 @@
 <!-- Default form contact -->
 <form class="text-center border border-light p-5">
-    <p class="h4 mb-4">Nouveau Plat</p>
-    <!-- Name -->
-    <label>Nom</label>
-    <input type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="Nom plat" name="nom">
-    <!--  -->
-    <label>Prix de Vente</label>
-    <input type="number" id="defaultContactFormEmail" class="form-control mb-4" placeholder="Prix de Vente" name="prix_vente">
-    <label>Prix de Revient</label> 
-    <input type="number" id="defaultContactFormEmail" class="form-control mb-4" placeholder="Prix de Revient" name="prix_revient">
-    <!--  -->
-    <label>Visible sur E-Kaly</label>
-    <select class="browser-default custom-select mb-4" name="visibilite">
-      <option value="oui" selected>OUI</option>
-      <option value="non">NON</option>
-    </select>
-    <!-- Image -->
-    Image plat
-    <div class="custom-file">
-        <label>Image plat</label>
-        <input type="file" class="custom-file-input" id="customFile" (change)="onFileSelected($event)">
-        <label class="custom-file-label" for="customFile">Choose file</label>
+  <p class="h4 mb-4">Nouveau Plat</p>
+  <!-- Name -->
+  <label>Nom</label>
+  <input type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="Nom plat" [(ngModel)]="nom_plat" name="nom_plat" required>
+  <!--  -->
+  <label>Prix de Vente</label>
+  <input type="number" id="defaultContactFormEmail" class="form-control mb-4" placeholder="Prix de Vente" [(ngModel)]="prix_vente" name="prix_vente" required>
+  <label>Prix de Revient</label> 
+  <input type="number" id="defaultContactFormEmail" class="form-control mb-4" placeholder="Prix de Revient" [(ngModel)]="prix_revient" name="prix_revient" required>
+  <!--  -->
+  <label>Visible sur E-Kaly</label>
+  <select class="browser-default custom-select mb-4"[(ngModel)]="visibilite" name="visibilite" required>
+    <option value="oui" selected>OUI</option>
+    <option value="non">NON</option>
+  </select>
+  <!-- Image -->
+  Image plat
+  <div class="custom-file">
+      <label>Image plat</label>
+      <input name="image" type="file"  class="custom-file-input" id="customFile" (change)="onChange($event)" ngModel/>
+      <label class="custom-file-label" for="customFile">Choose file</label>
+  </div>
+
+  <div *ngIf="myimage">
+      <img src="{{myimage}}" width="200" height="200" alt="" />
     </div>
-    <!-- Copy -->
-    <input type="file" (change)="onFileSelected($event)">
-    <!-- Send button -->
-    <button mdbBtn color="info" block="true" type="submit">Send</button>
-  </form>
-  <!-- Default form contact -->
+  <!-- Copy -->
+  <!-- Send button -->
+  <button type="submit" mdbBtn color="info" block="true" (click)="insert_plat()" >Send</button>
+</form>

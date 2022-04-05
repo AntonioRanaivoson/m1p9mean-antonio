@@ -14,6 +14,8 @@ var PRODUCTS_COLLECTION = "products";
 
 // Create new instance of the express server
 var app = express();
+app.use(express.json({limit: '50mb'}));
+app.use(express.urlencoded({limit: '50mb'}));
 const path=require("path");
 app.use(compression());
 
@@ -22,11 +24,13 @@ app.use(compression());
 // exposed APIs
 app.use(bodyParser.json());
 
+
 // Create link to Angular build directory
 // The `ng build` command will save the result
 // under the `dist` folder.
 var distDir = __dirname + "/dist/node-express-angular/";
 app.use(express.static(distDir));
+
 
 app.get('/Login',(req,res)=>res.sendFile(path.join(__dirname,'/dist/node-express-angular/index.html')));
 //app.get('/Inscription',(req,res)=>res.sendFile(path.join(__dirname,'/dist/node-express-angular/index.html')));
@@ -184,11 +188,11 @@ app.get("/api/users/restos", function (req, res) {
 });
 
 
-//Get all plats by resto 
-app.get("/api/plats/:id_resto", function (req, res) {
-    var id=req.params.id_resto;
+
+app.get("/api/plats", function (req, res) {
+    
     var ObjectId = require('mongodb').ObjectID;
-    database.collection('plats').find({ _id: ObjectId(id) }).toArray(function (error, data) {
+    database.collection('plats').find({ }).toArray(function (error, data) {
         if (error) {
             manageError(res, err.message, "Failed to get contacts.");
         } else {
@@ -196,7 +200,51 @@ app.get("/api/plats/:id_resto", function (req, res) {
         }
     });
 });
+app.get("/api/plats-restos/:id_resto", function (req, res) {
+    var id=req.params.id_resto;
+    console.log(id);
+    database.collection('plats').find({id_resto: id}).toArray(function (error, data) {
+        if (error) {
+            manageError(res, err.message, "Failed to get contacts.");
+        } else {
+            res.status(200).json({ "status":"OK","resto": data});
+        }
+    });
+});
 
+app.get("/api/plats-restos-ekaly/:id_resto", function (req, res) {
+    var id=req.params.id_resto;
+    console.log(id);
+    database.collection('plats').find({id_resto: id,visibilite:"oui",deleted:"non"}).toArray(function (error, data) {
+        if (error) {
+            manageError(res, err.message, "Failed to get contacts.");
+        } else {
+            res.status(200).json({ "status":"OK","resto": data});
+        }
+    });
+});
+
+
+
+
+
+
+
+
+//Insert plats
+app.post("/api/plats", function (req, res) {
+    var plats = req.body;
+
+
+        database.collection('plats').insertOne(plats, function (err, doc) {
+            if (err) {
+                manageError(res, err.message, "Failed to create new product.");
+            } else {
+                res.status(201).json(doc.ops[0]);
+            }
+        });
+    
+});
 
 
 
@@ -285,7 +333,6 @@ app.post("/api/users", function (req, res) {
         });
     
 });
-
 
 
 

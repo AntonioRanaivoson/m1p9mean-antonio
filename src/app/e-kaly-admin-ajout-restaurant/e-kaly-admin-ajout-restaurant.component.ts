@@ -35,7 +35,7 @@ export class EKalyAdminAjoutRestaurantComponent implements OnInit {
 
     // Manage the submit action and create the new product.
     onSubmit() {
-      const user = new Restos(this.userForm.value['nom'], "",this.userForm.value['email'],this.userForm.value['mdp'],this.profil,"oui");
+      const user = new Restos(this.userForm.value['nom'].trim(), "",this.userForm.value['email'].trim(),this.userForm.value['mdp'],this.profil,"oui");
       this.userService
       .check_mail(this.userForm.value['email'])
       .then((result:IUser) => {

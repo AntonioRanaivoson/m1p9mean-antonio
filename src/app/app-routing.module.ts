@@ -12,6 +12,7 @@ import { EKalyRestaurantComponent } from './e-kaly-restaurant/e-kaly-restaurant.
 import { EKalyAdminComponent } from './e-kaly-admin/e-kaly-admin.component';
 import { EKalyAdminAjoutRestaurantComponent } from './e-kaly-admin-ajout-restaurant/e-kaly-admin-ajout-restaurant.component';
 import { EKalyAdminRestaurantComponent } from './e-kaly-admin-restaurant/e-kaly-admin-restaurant.component';
+import { ProductlistdetailComponent } from './productlistdetail/productlistdetail.component';
 
 
 const routes: Routes = [
@@ -55,6 +56,11 @@ const routes: Routes = [
 
   {
     path:'list',component:ProductListComponent ,
+   
+
+  } , 
+  {
+    path:'list/:nom',component:ProductlistdetailComponent ,
   } , 
 
 

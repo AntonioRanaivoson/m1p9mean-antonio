@@ -1,58 +1,89 @@
-<!doctype html>
-<html lang="en">
-  <head>
-  	<title>Sidebar 09</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 		
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  </head>
-  <body>
-		
-		<div class="wrapper d-flex align-items-stretch">
-			<nav id="sidebar">
-				<div class="custom-menu">
-                   
-        </div>
-        <h1>E-Kaly</h1>
-	  		<div class="img bg-wrap text-center py-4">
-	  			<div class="user-logo">
-	  				<div class="img" style="background-image: url('./assets/images/user.png');"></div>
-                      <h3>Admin</h3>
-                      <p>{{email}}</p>
-                      
-	  			</div>
-	  		</div>
-        <ul class="list-unstyled components mb-5">
-          <li class="active">
-            <a href="/e-kaly-admin"><span class="fa fa-home mr-3"></span> Home</a>
-          </li>
-          <li>
-            <a href="/e-kaly-admin/ajout-restaurant"><span class="fa fa-download mr-3 notif"><small class="d-flex align-items-center justify-content-center">5</small></span>Nouveau restaurant</a>
-        </li>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-          <li>
-              <a href="#"><span class="fa fa-download mr-3 notif"><small class="d-flex align-items-center justify-content-center">5</small></span> Mes Commandes</a>
-          </li>
-         
-          <li>
-            <a (click)="deconnexion()"><span class="fa fa-sign-out mr-3"></span>Deconnexion</a>
-          </li>
-        </ul>
+<style>
+body {
+  margin: 0;
+  font-family: "Lato", sans-serif;
+}
 
-    	</nav>
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #f1f1f1;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+  background-image: radial-gradient( circle farthest-corner at 10% 20%, #61d47f 0%, #4f91d3 90% );
+}
 
-        <!-- Page Content  -->
-      <div id="content" class="p-4 p-md-5 pt-5">
-      <router-outlet></router-outlet>
+.sidebar a {
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+}
+ 
+.sidebar a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 1000px;
+}
+
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+  <h1>E-Kaly</h1>
+  <div class="img bg-wrap text-center py-4">
+    <div class="user-logo">
+      <div class="img" style="background-image: url('./assets/images/user.png');"></div>
+      <h3>Admin</h3>
+                <p style="font-weight: bold;color: white;">{{email}}</p>
     </div>
-		</div>
+  </div>
+  <a href="/e-kaly-admin" class="active"><span class="fa fa-home mr-3"></span> Home</a>
+  <a href="/e-kaly-admin/ajout-restaurant"><span class="fa fa-download mr-3 notif"></span>Nouveau restaurant</a>
+  <a href="#"><span class="fa fa-download mr-3 notif"></span> Mes Commandes</a>
+  <a (click)="deconnexion()"><span class="fa fa-sign-out mr-3"></span>Deconnexion</a>
+</div>
 
-    <script src="js/jquery.min.js"></script>
-    <script src="js/popper.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
-  </body>
+<div class="content">
+  <router-outlet></router-outlet>
+</div>
+
+</body>
 </html>

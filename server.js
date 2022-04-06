@@ -203,7 +203,7 @@ app.get("/api/plats", function (req, res) {
 app.get("/api/plats-restos/:id_resto", function (req, res) {
     var id=req.params.id_resto;
     console.log(id);
-    database.collection('plats').find({id_resto: id}).toArray(function (error, data) {
+    database.collection('plats').find({id_resto: id,deleted:"non"}).toArray(function (error, data) {
         if (error) {
             manageError(res, err.message, "Failed to get contacts.");
         } else {
@@ -223,6 +223,34 @@ app.get("/api/plats-restos-ekaly/:id_resto", function (req, res) {
         }
     });
 });
+
+
+app.get("/api/plats-restos-ekalys/:nom_resto", function (req, res) {
+    var nom=req.params.nom_resto;
+    console.log(nom);
+    database.collection('plats').find({nom_resto: nom,visibilite:"oui",deleted:"non"}).toArray(function (error, data) {
+        if (error) {
+            manageError(res, err.message, "Failed to get contacts.");
+        } else {
+            res.status(200).json({ "status":"OK","resto": data});
+        }
+    });
+});
+
+
+app.get("/api/plats-delete-ekaly/:id", function (req, res) {
+  
+        //updateOne({email:mail},{$set:{ekaly:option}}
+        database.collection('plats').updateOne({ _id: new ObjectID(req.params.id)},{$set:{deleted:"oui"}} , function (err, result) {
+            if (err) {
+                manageError(res, err.message, "Failed to delete plat.");
+            } else {
+                res.status(200).json(req.params.id);
+            }
+        });
+    
+});
+
 
 
 

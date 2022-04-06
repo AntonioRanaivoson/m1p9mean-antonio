@@ -27,7 +27,7 @@ export class PlatsService {
     }
 
     get_plats_restos_ekaly(id_resto:string): Promise<Array<IPlats>> {
-        return this.http.get(this.usersUrl+"-restos-ekaly/"+id_resto)
+        return this.http.get(this.usersUrl+"-restos-ekalys/"+id_resto)
             .toPromise()
             .then(response => response.json())
             .catch(this.error);
@@ -44,6 +44,12 @@ export class PlatsService {
             .catch(this.error);
     }
 
+    delete(id: string): Promise<any> {
+        return this.http.get(this.usersUrl+"-delete-ekaly/"+id)
+            .toPromise()
+            .then(response => response.json())
+            .catch(this.error);
+    }
 
     // Error handling
     private error(error: any) {

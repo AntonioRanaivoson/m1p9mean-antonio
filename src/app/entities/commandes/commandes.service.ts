@@ -28,6 +28,13 @@ export class CommandesService {
             .catch(this.error);
     }
 
+    get_Commandes_encours(): Promise<Array<ICommandes>> {
+        return this.http.get(this.usersUrl+"-en-cours")
+            .toPromise()
+            .then(response => response.json())
+            .catch(this.error);
+    }
+
 
 
 

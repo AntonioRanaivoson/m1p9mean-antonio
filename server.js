@@ -471,7 +471,7 @@ app.post("/api/Commandes", function (req, res) {
     
 });
 
-//Commandes en cours
+//Commandes en cours user
 app.get("/api/Commandes-user-en-cours/:id_user", function (req, res) {
     var id=req.params.id_user;
     //var ObjectId = require('mongodb').ObjectID;
@@ -484,10 +484,36 @@ app.get("/api/Commandes-user-en-cours/:id_user", function (req, res) {
     });
 });
 
+//Commandes en cours
+app.get("/api/Commandes-en-cours", function (req, res) {
+    var id=req.params.id_user;
+    //var ObjectId = require('mongodb').ObjectID;
+    database.collection('commandes').find({etat:"en_cours"}).toArray(function (error, data) {
+        if (error) {
+            manageError(res, err.message, "Failed to get contacts.");
+        } else {
+            res.status(200).json(data);
+        }
+    });
+});
 
 
 
 
+
+
+
+
+//Get Livreur
+app.get("/api/Livreur", function (req, res) {
+    database.collection('user').find({profil:"livreur",ekaly:"oui"}).toArray(function (error, data) {
+        if (error) {
+            manageError(res, err.message, "Failed to get contacts.");
+        } else {
+            res.status(200).json(data);
+        }
+    });
+});
 
 
 

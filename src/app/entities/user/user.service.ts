@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { IUser, User ,Users,LUser, IResto} from './user.model';
+import { IUser, User ,Users,LUser, IResto, ILivreur} from './user.model';
 
 @Injectable({
     providedIn: 'root'
@@ -18,6 +18,17 @@ export class UserService {
             .then(response => response.json())
             .catch(this.error);
     }
+
+
+    get_livreur():Promise<Array<ILivreur>> {
+        return this.http.get('/api/Livreur')
+        .toPromise()
+        .then(response => response.json())
+        .catch(this.error);
+    }
+
+
+
 
     check_mail(email:string): Promise<IUser>{
         return this.http.get(this.usersUrl+'/'+email).toPromise().then(response => response.json())
@@ -81,6 +92,11 @@ export class UserService {
             .then(response => response.json())
             .catch(this.error);
     }
+
+
+
+  
+
 
     // Error handling
     private error(error: any) {

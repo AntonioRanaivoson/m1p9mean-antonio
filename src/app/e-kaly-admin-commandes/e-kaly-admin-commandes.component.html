@@ -1,0 +1,68 @@
+<header>
+    <!-- Navbar -->
+   
+    <!-- Navbar -->
+  
+    <!-- Jumbotron -->
+    <div class="p-5 text-center bg-light" style="background-image: url('./assets/images/heads.webp');">
+      <h1 class="mb-3" style="color: White;">E-Kaly</h1>
+      <h4 class="mb-3"style="color: White;"></h4>
+    </div>
+    <!-- Jumbotron -->
+  </header>
+  
+  <div class="container">
+    <h1>Commande(s) a Livrer</h1>
+    <hr>
+    <p></p>
+
+    <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Image</th>
+            <th scope="col">Plat</th>
+            <th scope="col">Restaurant</th>
+            <th scope="col">Date</th>
+            <th scope="col">Client</th>
+            <th scope="col">Quantite</th>
+            <th scope="col">Montant totale (Ar)</th>
+            <th scope="col">Livreur</th>
+            <th scope="col">Livrer</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let com of commandes_encours" style="height: 100px;">
+            <td><img src="{{com.image}}" width="50" height="50"></td>
+            <td>{{com.nom_plat}}</td>
+            <td>{{com.nom_resto}}</td>
+            <td>{{com.date}}</td>
+            <td>{{com.email}}</td>
+            <td>{{com.quantite}}</td>
+            <td>{{com.prix_total}}</td>
+
+            <td>
+                <select class="browser-default custom-select mb-4" [(ngModel)]="livreurs" name="livreurs" required>
+                    <option [ngValue]="null" disabled>Choisir livreur</option>
+                    <option *ngFor="let livre of livreur" [ngValue]="livre.id">{{livre.nom}}</option>
+                </select>
+
+                
+
+
+            </td>
+            <td>
+                <button>OK</button>
+            </td>
+            <hr>
+          </tr>
+
+         
+        </tbody>
+      </table>
+      
+    
+
+
+
+
+</div>

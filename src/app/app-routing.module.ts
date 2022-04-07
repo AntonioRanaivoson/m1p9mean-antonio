@@ -16,6 +16,8 @@ import { ProductlistdetailComponent } from './productlistdetail/productlistdetai
 import { EKalyRestaurantPlatComponent } from './e-kaly-restaurant-plat/e-kaly-restaurant-plat.component';
 import { EKalyAdminRestaurantPlatComponent } from './e-kaly-admin-restaurant-plat/e-kaly-admin-restaurant-plat.component';
 import { EKalyCommandesComponent } from './e-kaly-commandes/e-kaly-commandes.component';
+import { EKalyAdminLivreurComponent } from './e-kaly-admin-livreur/e-kaly-admin-livreur.component';
+import { EKalyAdminCommandesComponent } from './e-kaly-admin-commandes/e-kaly-admin-commandes.component';
 
 
 const routes: Routes = [
@@ -52,6 +54,8 @@ const routes: Routes = [
       {path:'',component:EKalyAdminRestaurantComponent},
       {path:'ajout-restaurant',component:EKalyAdminAjoutRestaurantComponent},
       {path:'restaurant/:nom',component:EKalyAdminRestaurantPlatComponent},
+      {path:'livreur',component:EKalyAdminLivreurComponent},
+      {path:'commandes',component:EKalyAdminCommandesComponent},
 
     ]
 

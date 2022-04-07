@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { ICommandes, Commandes} from './Commandes.model';
+import { ICommandes, Commandes} from './commandes.model';
 
 @Injectable({
     providedIn: 'root'

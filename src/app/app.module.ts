@@ -24,6 +24,9 @@ import { EKalyAdminAjoutRestaurantComponent } from './e-kaly-admin-ajout-restaur
 import { EKalyAdminRestaurantComponent } from './e-kaly-admin-restaurant/e-kaly-admin-restaurant.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { ProductlistdetailComponent } from './productlistdetail/productlistdetail.component';
+import { EKalyRestaurantPlatComponent } from './e-kaly-restaurant-plat/e-kaly-restaurant-plat.component';
+import { EKalyAdminRestaurantPlatComponent } from './e-kaly-admin-restaurant-plat/e-kaly-admin-restaurant-plat.component';
+import { EKalyCommandesComponent } from './e-kaly-commandes/e-kaly-commandes.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +46,10 @@ import { ProductlistdetailComponent } from './productlistdetail/productlistdetai
     EKalyAdminComponent,
     EKalyAdminAjoutRestaurantComponent,
     EKalyAdminRestaurantComponent,
-    ProductlistdetailComponent
+    ProductlistdetailComponent,
+    EKalyRestaurantPlatComponent,
+    EKalyAdminRestaurantPlatComponent,
+    EKalyCommandesComponent
   ],
   imports: [
     BrowserModule,

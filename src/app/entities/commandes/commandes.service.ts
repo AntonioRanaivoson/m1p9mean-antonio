@@ -1,32 +1,44 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { IPlats, IPlatsU, Plats, PlatsU} from './plats.model';
+import { ICommandes, Commandes} from './Commandes.model';
 
 @Injectable({
     providedIn: 'root'
 })
-export class PlatsService {
+export class CommandesService {
     options = {headers : { 'Content-Type' : 'application/x-www-form-urlencoded' }};
-    private usersUrl = '/api/plats';
+    private usersUrl = '/api/Commandes';
     
     constructor(private http: Http) { }
 
-    // Get plats
-    get(): Promise<Array<IPlats>> {
+    // Get Commandes
+    get(): Promise<Array<ICommandes>> {
         return this.http.get(this.usersUrl)
             .toPromise()
             .then(response => response.json())
             .catch(this.error);
     }
 
-    get_plats_restos(id_resto:string): Promise<Array<IPlats>> {
+
+
+    get_Commandes_user_encours(id_user:string): Promise<Array<ICommandes>> {
+        return this.http.get(this.usersUrl+"-user-en-cours/"+id_user)
+            .toPromise()
+            .then(response => response.json())
+            .catch(this.error);
+    }
+
+
+
+
+    get_Commandes_restos(id_resto:string): Promise<Array<ICommandes>> {
         return this.http.get(this.usersUrl+"-restos/"+id_resto)
             .toPromise()
             .then(response => response.json())
             .catch(this.error);
     }
 
-    get_plats_restos_ekaly(id_resto:string): Promise<Array<IPlats>> {
+    get_Commandes_restos_ekaly(id_resto:string): Promise<Array<ICommandes>> {
         return this.http.get(this.usersUrl+"-restos-ekalys/"+id_resto)
             .toPromise()
             .then(response => response.json())
@@ -36,27 +48,21 @@ export class PlatsService {
 
 
 
-     // Create plats
-     create(plats: Plats): Promise<IPlats> {
-        return this.http.post(this.usersUrl, plats)
+     // Create Commandes
+     create(Commandes: Commandes): Promise<ICommandes> {
+        return this.http.post(this.usersUrl, Commandes)
             .toPromise()
             .then(response => response.json())
             .catch(this.error);
     }
 
-    get_plat_id(id:string):Promise<Array<IPlats>>{
+    get_plat_id(id:string):Promise<Array<ICommandes>>{
         return this.http.get(this.usersUrl+"/"+id)
         .toPromise()
         .then(response => response.json())
         .catch(this.error);
     }
 
-    update(id:string,plats: PlatsU): Promise<IPlatsU> {
-        return this.http.post(this.usersUrl+"-update/"+id, plats)
-            .toPromise()
-            .then(response => response.json())
-            .catch(this.error);
-    }
 
     delete(id: string): Promise<any> {
         return this.http.get(this.usersUrl+"-delete-ekaly/"+id)

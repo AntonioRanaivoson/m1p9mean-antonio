@@ -1,0 +1,66 @@
+<header>
+    <!-- Navbar -->
+   
+    <!-- Navbar -->
+  
+    <!-- Jumbotron -->
+    <div class="p-5 text-center bg-light" style="background-image: url('./assets/images/heads.webp');">
+      <h1 class="mb-3" style="color: White;">E-Kaly</h1>
+      <h4 class="mb-3"style="color: White;"></h4>
+    </div>
+    <!-- Jumbotron -->
+  </header>
+<div class="container bootdey">
+    <h1>Restaurant : {{nom_resto_client}}</h1> 
+    <p>Choisissez vos plats!</p>
+  
+
+
+
+    <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-4" *ngIf="platsRestos.length > 0">
+    
+        <div *ngFor="let plat of  platsRestos" class="col">
+            <div class="card radius-15">
+                <div class="card-body text-center">
+                    <div class="p-4 border radius-15">
+                        <img src="{{plat.image}}" width="110" height="110" class="rounded-circle shadow" alt="">
+                        <h5 class="mb-0 mt-5">{{plat.nom_plat}}</h5>
+                        <p class="mb-3">{{plat.prix_vente}}</p>
+                       
+                    
+                    </div>
+                    <div class="row" style="margin-top: 10px;">
+                        <input type="number" id="defaultContactFormEmail" class="form-control" style="width: 65px;margin-left: 50px;" placeholder="Qt" min="1">
+                        <input type="number" id="defaultContactFormEmail" class="form-control" style="width: 65px;margin-left: 10px;" placeholder="Qt" min="1">
+                    </div>
+                </div>
+            </div>
+        </div>
+         
+        
+    
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>

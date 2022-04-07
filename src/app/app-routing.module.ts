@@ -13,6 +13,9 @@ import { EKalyAdminComponent } from './e-kaly-admin/e-kaly-admin.component';
 import { EKalyAdminAjoutRestaurantComponent } from './e-kaly-admin-ajout-restaurant/e-kaly-admin-ajout-restaurant.component';
 import { EKalyAdminRestaurantComponent } from './e-kaly-admin-restaurant/e-kaly-admin-restaurant.component';
 import { ProductlistdetailComponent } from './productlistdetail/productlistdetail.component';
+import { EKalyRestaurantPlatComponent } from './e-kaly-restaurant-plat/e-kaly-restaurant-plat.component';
+import { EKalyAdminRestaurantPlatComponent } from './e-kaly-admin-restaurant-plat/e-kaly-admin-restaurant-plat.component';
+import { EKalyCommandesComponent } from './e-kaly-commandes/e-kaly-commandes.component';
 
 
 const routes: Routes = [
@@ -36,7 +39,8 @@ const routes: Routes = [
     path:'e-kaly',component:EKalyComponent ,
     children: [
       {path:'',component:EKalyRestaurantComponent},
-      {path:'restaurant/:nom',component:RestaurantsPlatsComponent},
+      {path:'restaurant/:nom',component:EKalyRestaurantPlatComponent},
+      {path:'commandes',component:EKalyCommandesComponent},
     ]
 
   } , 
@@ -47,7 +51,7 @@ const routes: Routes = [
     children: [
       {path:'',component:EKalyAdminRestaurantComponent},
       {path:'ajout-restaurant',component:EKalyAdminAjoutRestaurantComponent},
-      {path:'restaurant/:nom',component:RestaurantsPlatsComponent},
+      {path:'restaurant/:nom',component:EKalyAdminRestaurantPlatComponent},
 
     ]
 

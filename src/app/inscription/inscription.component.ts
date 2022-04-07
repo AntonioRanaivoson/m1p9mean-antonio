@@ -33,7 +33,7 @@ export class InscriptionComponent implements OnInit {
 
     // Manage the submit action and create the new product.
     onSubmit() {
-      const user = new User(this.userForm.value['nom'], this.userForm.value['prenom'],this.userForm.value['email'],this.userForm.value['mdp'],this.profil);
+      const user = new User(this.userForm.value['nom'].trim(), this.userForm.value['prenom'],this.userForm.value['email'],this.userForm.value['mdp'],this.profil);
       this.userService
       .check_mail(this.userForm.value['email'])
       .then((result:IUser) => {

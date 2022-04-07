@@ -200,6 +200,41 @@ app.get("/api/plats", function (req, res) {
         }
     });
 });
+
+
+
+app.get("/api/plats/:id", function (req, res) {
+    var id=req.params.id;
+    var ObjectId = require('mongodb').ObjectID;
+    database.collection('plats').find({_id: new ObjectID(id) }).toArray(function (error, data) {
+        if (error) {
+            manageError(res, err.message, "Failed to get contacts.");
+        } else {
+            res.status(200).json(data);
+        }
+    });
+});
+
+
+
+app.post("/api/plats-update/:id", function (req, res) {
+    var id=req.params.id;
+    var plat = req.body;
+   // console.log(id);
+    var ObjectId = require('mongodb').ObjectID;
+    database.collection('plats').findOneAndUpdate({_id: new ObjectID(id) },{$set:plat}),(function (error, data) {
+        if (error) {
+            manageError(res, err.message, "Failed to get contacts.");
+        } else {
+            res.status(200).json(data);
+        }
+    });
+});
+
+
+
+
+
 app.get("/api/plats-restos/:id_resto", function (req, res) {
     var id=req.params.id_resto;
     console.log(id);
@@ -238,10 +273,11 @@ app.get("/api/plats-restos-ekalys/:nom_resto", function (req, res) {
 });
 
 
-app.get("/api/plats-delete-ekaly/:id", function (req, res) {
-  
+app.get("/api/plats-delete-ekaly/:id/:option", function (req, res) {
+    var id=req.params.id;
+    var option=req.params.option;
         //updateOne({email:mail},{$set:{ekaly:option}}
-        database.collection('plats').updateOne({ _id: new ObjectID(req.params.id)},{$set:{deleted:"oui"}} , function (err, result) {
+        database.collection('plats').updateOne({ _id: new ObjectID(id)},{$set:{visibilite:option}} , function (err, result) {
             if (err) {
                 manageError(res, err.message, "Failed to delete plat.");
             } else {
@@ -252,6 +288,33 @@ app.get("/api/plats-delete-ekaly/:id", function (req, res) {
 });
 
 
+app.get("/api/plats-update-ekaly/:id", function (req, res) {
+  
+    //updateOne({email:mail},{$set:{ekaly:option}}
+    database.collection('plats').updateOne({ _id: new ObjectID(req.params.id)},{$set:{deleted:"oui"}} , function (err, result) {
+        if (err) {
+            manageError(res, err.message, "Failed to delete plat.");
+        } else {
+            res.status(200).json(req.params.id);
+        }
+    });
+
+});
+
+
+
+app.get("/api/plats-recherche/:nom_resto/:nom_plat", function (req, res) {
+    var nom=req.params.nom_resto;
+    var plat=req.params.nom_plat;
+    console.log(nom);
+    database.collection('plats').find({nom_resto: nom,nom_plat:plat,visibilite:"oui",deleted:"non"}).toArray(function (error, data) {
+        if (error) {
+            manageError(res, err.message, "Failed to get contacts.");
+        } else {
+            res.status(200).json({ "status":"OK","resto": data});
+        }
+    });
+});
 
 
 
@@ -392,6 +455,38 @@ app.get('/api/users/:mail', (req, res) => {
       })
       .catch(/* ... */)
   })
+
+
+
+//Insert Commandes
+app.post("/api/Commandes", function (req, res) {
+    var commande = req.body;
+        database.collection('commandes').insertOne(commande, function (err, doc) {
+            if (err) {
+                manageError(res, err.message, "Failed to create new product.");
+            } else {
+                res.status(201).json(doc.ops[0]);
+            }
+        });
+    
+});
+
+//Commandes en cours
+app.get("/api/Commandes-user-en-cours/:id_user", function (req, res) {
+    var id=req.params.id_user;
+    //var ObjectId = require('mongodb').ObjectID;
+    database.collection('commandes').find({id_user:id,etat:"en_cours"}).toArray(function (error, data) {
+        if (error) {
+            manageError(res, err.message, "Failed to get contacts.");
+        } else {
+            res.status(200).json(data);
+        }
+    });
+});
+
+
+
+
 
 
 

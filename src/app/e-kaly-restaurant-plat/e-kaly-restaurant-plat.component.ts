@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Commandes, ICommandes } from '../entities/commandes/Commandes.model';
+import { Commandes, ICommandes } from '../entities/commandes/commandes.model';
 import { CommandesService } from '../entities/commandes/commandes.service';
 import { IPlats } from '../entities/plats/plats.model';
 import { PlatsService } from '../entities/plats/plats.service';

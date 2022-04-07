@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ICommandes } from '../entities/commandes/Commandes.model';
+import { ICommandes } from '../entities/commandes/commandes.model';
 import { CommandesService } from '../entities/commandes/commandes.service';
 import { ILivreur, IUser } from '../entities/user/user.model';
 import { UserService } from '../entities/user/user.service';

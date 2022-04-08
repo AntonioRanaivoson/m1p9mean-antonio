@@ -15,6 +15,7 @@
     <h1>Commande(s) a Livrer</h1>
     <hr>
     <p></p>
+    <div class="col-md-12">
 
     <table class="table">
         <thead class="thead-dark">
@@ -41,17 +42,15 @@
             <td>{{com.prix_total}}</td>
 
             <td>
-                <select class="browser-default custom-select mb-4" [(ngModel)]="livreurs" name="livreurs" required>
+                <select class="browser-default custom-select mb-4"  id="id_livreur" [(ngModel)]="id_livreur" name="id_livreur" required>
                     <option [ngValue]="null" disabled>Choisir livreur</option>
-                    <option *ngFor="let livre of livreur" [ngValue]="livre.id">{{livre.nom}}</option>
+                    <option *ngFor="let livre of livreur" [ngValue]="livre">{{livre.nom}}</option>
                 </select>
-
-                
-
-
+                <input type="hidden" [(ngModel)]="email_client" value="com.email">
+                <p>{{message}}</p>
             </td>
             <td>
-                <button>OK</button>
+                <button (click)="livrer(com._id,com.email,com.id_resto,com.nom_resto,com.id_plat,com.nom_plat,com.quantite,com.image,com.date,com.prix_total)">OK</button>
             </td>
             <hr>
           </tr>
@@ -62,7 +61,7 @@
       
     
 
-
+    </div>
 
 
 </div>

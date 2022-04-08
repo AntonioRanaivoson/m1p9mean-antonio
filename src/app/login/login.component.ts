@@ -56,6 +56,13 @@ export class LoginComponent implements OnInit {
             let item = JSON.parse(localStorage.getItem("token_admin"));
             this.route.navigateByUrl("/e-kaly-admin");
           }
+
+          if(result["profil"]=="livreur")
+          {
+            localStorage.setItem("token_livreur",JSON.stringify(result));
+           // let item = JSON.parse(localStorage.getItem("token_client"));
+            this.route.navigateByUrl("/livreur");
+          }
          
           //console.log("ITO"+item["token"]);
 

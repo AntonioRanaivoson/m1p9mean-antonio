@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+		
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+body {
+  margin: 0;
+  font-family: "Lato", sans-serif;
+}
+
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #f1f1f1;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+  background-image: radial-gradient( circle farthest-corner at 10% 20%, #61d47f 0%, #4f91d3 90% );
+}
+
+.sidebar a {
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+}
+ 
+.sidebar a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 1000px;
+}
+
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+  <h1>E-Kaly-Livreur</h1>
+  <div class="img bg-wrap text-center py-4">
+    <div class="user-logo">
+      <div class="img" style="background-image: url('./assets/images/user.png');"></div>
+      <h3>{{noms}}</h3>
+                <p style="font-weight: bold;color: white;">{{email}}</p>
+    </div>
+  </div>
+  <a href="/livreur" class="active"><span class="fa fa-home mr-3"></span> Home</a>
+  <a (click)="deconnexion()"><span class="fa fa-sign-out mr-3"></span>Deconnexion</a>
+</div>
+
+<div class="content">
+
+
+    <header>
+        <!-- Navbar -->
+       
+        <!-- Navbar -->
+      
+        <!-- Jumbotron -->
+        <div class="p-5 text-center bg-light" style="background-image: url('./assets/images/heads.webp');">
+          <h1 class="mb-3" style="color: White;">E-Kaly</h1>
+          <h4 class="mb-3"style="color: White;"></h4>
+        </div>
+        <!-- Jumbotron -->
+      </header>
+      
+      <div class="container">
+        <h1>Commande(s) a Livrer aux clients</h1>
+        <hr>
+        <p></p>
+        <div class="col-md-12">
+    
+        <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Image</th>
+                <th scope="col">Plat</th>
+                <th scope="col">Restaurant</th>
+                <th scope="col">Date</th>
+                <th scope="col">Client</th>
+                <th scope="col">Quantite</th>
+                <th scope="col">Montant totale (Ar)</th>
+                <th scope="col">Livrer</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let com of commandes_encours" style="height: 100px;">
+                <td><img src="{{com.image}}" width="50" height="50"></td>
+                <td>{{com.nom_plat}}</td>
+                <td>{{com.nom_resto}}</td>
+                <td>{{com.date}}</td>
+                <td>{{com.email_client}}</td>
+                <td>{{com.quantite}}</td>
+                <td>{{com.prix_total}}</td>
+            
+                <td>
+                    <button (click)="livrer(com.id_commande,com._id)">OK</button>
+                </td>
+                <hr>
+              </tr>
+    
+             
+            </tbody>
+          </table>
+          
+        
+    
+        </div>
+    
+    
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>
+

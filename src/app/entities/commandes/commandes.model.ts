@@ -20,6 +20,81 @@ export interface ICommandes {
   }
 
 
+
+
+
+  export interface ICommandes_livreur {
+    _id?: string;
+    id_commande:string;
+    id_livreur:string;
+    nom_livreur:string;
+    email_livreur:string;
+    email_client:string;
+    id_resto: string;
+    nom_resto: string;
+    id_plat:string;
+    nom_plat: string;
+    quantite:number;
+    image: any;
+    date:string;
+    date_livraison:string;
+    prix_total:number;
+    etat:string;
+  }
+
+
+  export class Commandes_livreur implements ICommandes_livreur {
+    constructor(
+        public id_commande:string,
+        public id_livreur:string,
+        public nom_livreur:string,
+        public email_livreur:string,
+        public email_client:string,
+        public id_resto: string,
+        public nom_resto: string,
+        public id_plat:string,
+        public nom_plat: string,
+        public quantite:number,
+        public image: any,
+        public date:string,
+        public date_livraison:string,
+        public prix_total:number,
+        public etat:string,
+
+      public _id?:  string,
+    ) {
+      this._id = _id ? _id : null;
+      this.id_commande=id_commande;
+      this.id_livreur=id_livreur;
+      this.nom_livreur=nom_livreur;
+      this.email_livreur=email_livreur;
+      this.email_client=email_client;
+      this.id_resto = id_resto;
+      this.nom_resto = nom_resto;
+      this.id_plat=id_plat;
+      this.nom_plat = nom_plat;
+      this.quantite=quantite
+      this.image=image;
+      this.date=date;
+      this.date=date;
+      this.date_livraison=date_livraison;
+      this.prix_total=prix_total;
+      this.etat;
+    }
+
+
+  }
+
+
+
+
+
+
+
+
+
+
+
   export class Commandes implements ICommandes {
     constructor(
       public  id_user:string,

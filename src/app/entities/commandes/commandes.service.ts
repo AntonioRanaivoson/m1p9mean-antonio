@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { ICommandes, Commandes} from './commandes.model';
+import { ICommandes, Commandes, Commandes_livreur, ICommandes_livreur} from './commandes.model';
 
 @Injectable({
     providedIn: 'root'
@@ -77,6 +77,47 @@ export class CommandesService {
             .then(response => response.json())
             .catch(this.error);
     }
+
+
+
+     // Create Commandes livreur
+     create_commande_livreur(Commandes: Commandes_livreur): Promise<ICommandes_livreur> {
+        return this.http.post(this.usersUrl+"/Livreur", Commandes)
+            .toPromise()
+            .then(response => response.json())
+            .catch(this.error);
+    }
+
+
+    get_commande_livreur(id:string):Promise<Array<ICommandes_livreur>>{
+        return this.http.get("api/Commandes_pour_livreur/"+id)
+        .toPromise()
+        .then(response => response.json())
+        .catch(this.error);
+    }
+
+
+   
+    valider_commandes(id:string):Promise<any>{
+        return this.http.get("api/Commandes-update/"+id).toPromise()
+        .then(response => response.json())
+        .catch(this.error);
+    }
+
+
+
+    valider_commandes_livreurs(id:string):Promise<any>{
+        return this.http.get("api/Commandes-update-livraison/"+id).toPromise()
+        .then(response => response.json())
+        .catch(this.error);
+    }
+
+
+
+
+
+
+
 
     // Error handling
     private error(error: any) {

@@ -516,6 +516,75 @@ app.get("/api/Livreur", function (req, res) {
 });
 
 
+//Insert Commandes
+app.post("/api/Commandes/Livreur", function (req, res) {
+    var commande = req.body;
+        database.collection('commandes_livreur').insertOne(commande, function (err, doc) {
+            if (err) {
+                manageError(res, err.message, "Failed to create new product.");
+            } else {
+                res.status(201).json(doc.ops[0]);
+            }
+        });
+    
+});
+
+
+
+
+
+//Get commande a livrer par livreur
+app.get("/api/Commandes_pour_livreur/:id_user", function (req, res) {
+    let id_livreur=req.params.id_user;
+    database.collection('commandes_livreur').find({id_livreur:id_livreur,etat:"livre"}).toArray(function (error, data) {
+        if (error) {
+            manageError(res, err.message, "Failed to get contacts.");
+        } else {
+            res.status(200).json(data);
+        }
+    });
+});
+
+
+//Livraison commande  
+app.get("/api/Commandes-update/:id", function (req, res) {
+    var id=req.params.id;
+    //var plat = req.body;
+   // console.log(id);
+    var ObjectId = require('mongodb').ObjectID;
+    database.collection('commandes').findOneAndUpdate({_id: new ObjectID(id) },{$set:{etat:"paye"}}),(function (error, data) {
+        if (error) {
+            manageError(res, err.message, "Failed to get contacts.");
+        } else {
+            res.status(200).json({"message":"Commande ok"});
+        }
+    });
+});
+
+
+
+
+
+app.get("/api/Commandes-update-livraison/:id", function (req, res) {
+    var id=req.params.id;
+    //var plat = req.body;
+   // console.log(id);
+    var ObjectId = require('mongodb').ObjectID;
+    database.collection('commandes_livreur').findOneAndUpdate({_id: new ObjectID(id) },{$set:{etat:"paye"}}),(function (error, data) {
+        if (error) {
+            manageError(res, err.message, "Failed to get contacts.");
+        } else {
+            res.status(200).json({"message":"Commande ok"});
+        }
+    });
+});
+
+
+
+
+
+
+
 
 
 // Errors handler.

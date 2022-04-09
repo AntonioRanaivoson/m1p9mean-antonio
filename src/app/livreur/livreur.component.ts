@@ -64,10 +64,16 @@ export class LivreurComponent implements OnInit {
   }
 
   livrer(id_commande:string,id_commande_livr:string,plat:any,quantite:any,resto:any,prix,email_client:any){
+    if (confirm("Livrer ce commande? Envoyer mail au client "+email_client+" ?") == true) {
     this.livrer_commandes_livreur(id_commande_livr);
     this.livrer_commandes(id_commande);
     this.sendmail(plat,quantite,resto,prix,email_client);
-  //  window.location.reload();
+    window.location.reload();
+    }
+    else
+    {
+
+    }
   }
 
   sendmail(plat:any,quantite:any,resto:any,prix,email_client:any){

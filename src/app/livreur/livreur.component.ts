@@ -1,3 +1,4 @@
+import { PlatformLocation } from '@angular/common';
 import { Component, OnInit,Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { ICommandes_livreur } from '../entities/commandes/commandes.model';
@@ -62,10 +63,17 @@ export class LivreurComponent implements OnInit {
     this.commandeServ.valider_commandes(id);
   }
 
-  livrer(id_commande:string,id_commande_livr:string){
+  livrer(id_commande:string,id_commande_livr:string,plat:any,quantite:any,resto:any,prix,email_client:any){
     this.livrer_commandes_livreur(id_commande_livr);
     this.livrer_commandes(id_commande);
-    window.location.reload();
+    this.sendmail(plat,quantite,resto,prix,email_client);
+  //  window.location.reload();
+  }
+
+  sendmail(plat:any,quantite:any,resto:any,prix,email_client:any){
+    let data={"plat":plat,"quantite":quantite,"resto":resto,"prix":prix};
+    console.log(data);
+    this.user.sendMail(email_client,data);
   }
 
   deconnexion()

@@ -94,7 +94,12 @@ export class UserService {
     }
 
 
-
+    sendMail(email:string,data:any): Promise<IUser> {
+        return this.http.post("api/user/sendmail/"+email, data)
+            .toPromise()
+            .then(response => response.json())
+            .catch(this.error);
+    }
   
 
 

@@ -24,6 +24,10 @@ app.use(compression());
 // exposed APIs
 app.use(bodyParser.json());
 
+var nodemailer = require('nodemailer');
+const { async } = require("rxjs/internal/scheduler/async");
+const { getMaxListeners } = require("process");
+
 
 // Create link to Angular build directory
 // The `ng build` command will save the result
@@ -581,7 +585,39 @@ app.get("/api/Commandes-update-livraison/:id", function (req, res) {
 
 
 
+app.post("/api/user/sendmail/:email", function (req, res) {
+    var user = req.params.email;
+    var dat=req.body;
+    console.log(user);
+   
+    sendMail(user,dat,info=>{
+        console.log('mail envoye avec succes');
+        console.log(dat);
+        res.send(info);
+    });
+});
 
+async function sendMail(email,dat, callback) {
+    var transporter =nodemailer.createTransport({
+        host: "smtp.gmail.com",
+        port: 587,
+        secure: false,
+        auth:{
+            user: 'ekalyrestaurant@gmail.com',
+            pass: '#Ekaly10'
+        }
+    });
+    let mailOptions={
+        from: 'ekalyrestaurant@gmail.com',
+        to:email,
+        subject:"Commande plat : Ekaly",
+        html:'<h1>Commande plat: '+dat.plat+'<br> Quantite : '+dat.quantite+'<br> Restaurant :'+dat.resto+' <br> Prix : '+dat.prix+' Ar  </h1></a><br><h3>merci de nous avoir rejoint</h3>'
+    };
+
+    let info= await transporter.sendMail(mailOptions);
+
+    callback(info);
+}
 
 
 

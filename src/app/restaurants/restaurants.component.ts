@@ -10,6 +10,7 @@ import { UserService } from '../entities/user/user.service';
 export class RestaurantsComponent implements OnInit {
   noms="";
   email="";
+  id_user="";
 
   constructor(private route:Router,private user:UserService) { }
 
@@ -28,6 +29,7 @@ export class RestaurantsComponent implements OnInit {
       else{ 
       this.noms=item["nom"];
       this.email=item["email"];
+      this.id_user=item["id_user"];
       console.log(item["token"]);}
   }
   }

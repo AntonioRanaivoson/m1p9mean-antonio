@@ -621,6 +621,23 @@ async function sendMail(email,dat, callback) {
 }
 
 
+//Benefice resto
+app.get("/api/Commandes-benefice-resto/:id_resto", function (req, res) {
+    var id=req.params.id_resto;
+    //var ObjectId = require('mongodb').ObjectID;
+    database.collection('commandes').find({id_resto:id,etat:"paye"}).toArray(function (error, data) {
+        if (error) {
+            manageError(res, err.message, "Failed to get contacts.");
+        } else {
+            res.status(200).json(data);
+        }
+    });
+});
+
+
+
+
+
 
 
 

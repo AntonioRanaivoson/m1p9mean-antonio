@@ -115,7 +115,13 @@ export class CommandesService {
 
 
 
-
+//Benefice Resto
+    get_Benefices_resto(id_user:string): Promise<Array<ICommandes>> {
+        return this.http.get("/api/Commandes-benefice-resto/"+id_user)
+            .toPromise()
+            .then(response => response.json())
+            .catch(this.error);
+    }
 
 
 

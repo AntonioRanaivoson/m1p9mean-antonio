@@ -30,6 +30,7 @@ import { EKalyCommandesComponent } from './e-kaly-commandes/e-kaly-commandes.com
 import { EKalyAdminLivreurComponent } from './e-kaly-admin-livreur/e-kaly-admin-livreur.component';
 import { EKalyAdminCommandesComponent } from './e-kaly-admin-commandes/e-kaly-admin-commandes.component';
 import { LivreurComponent } from './livreur/livreur.component';
+import { FootersComponent } from './footers/footers.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { LivreurComponent } from './livreur/livreur.component';
     EKalyCommandesComponent,
     EKalyAdminLivreurComponent,
     EKalyAdminCommandesComponent,
-    LivreurComponent
+    LivreurComponent,
+    FootersComponent
   ],
   imports: [
     BrowserModule,

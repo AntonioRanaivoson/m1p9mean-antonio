@@ -44,6 +44,7 @@ app.get('/e-kaly',(req,res)=>res.sendFile(path.join(__dirname,'/dist/node-expres
 app.get('/e-kaly/*',(req,res)=>res.sendFile(path.join(__dirname,'/dist/node-express-angular/index.html')));
 app.get('/e-kaly-admin/',(req,res)=>res.sendFile(path.join(__dirname,'/dist/node-express-angular/index.html')));
 app.get('/e-kaly-admin/*',(req,res)=>res.sendFile(path.join(__dirname,'/dist/node-express-angular/index.html')));
+app.get('/livreur',(req,res)=>res.sendFile(path.join(__dirname,'/dist/node-express-angular/index.html')));
 
 
 // Local database URI.

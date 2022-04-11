@@ -37,7 +37,7 @@ app.use(express.static(distDir));
 
 
 app.get('/Login',(req,res)=>res.sendFile(path.join(__dirname,'/dist/node-express-angular/index.html')));
-//app.get('/Inscription',(req,res)=>res.sendFile(path.join(__dirname,'/dist/node-express-angular/index.html')));
+app.get('/Inscription',(req,res)=>res.sendFile(path.join(__dirname,'/dist/node-express-angular/index.html')));
 app.get('/restaurant',(req,res)=>res.sendFile(path.join(__dirname,'/dist/node-express-angular/index.html')));
 app.get('/restaurant/*',(req,res)=>res.sendFile(path.join(__dirname,'/dist/node-express-angular/index.html')));
 app.get('/e-kaly',(req,res)=>res.sendFile(path.join(__dirname,'/dist/node-express-angular/index.html')));

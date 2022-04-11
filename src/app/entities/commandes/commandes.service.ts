@@ -124,6 +124,13 @@ export class CommandesService {
     }
 
 
+    get_Benefices_admin(): Promise<Array<ICommandes>> {
+        return this.http.get("api/Commandes-benefice-ekaly")
+            .toPromise()
+            .then(response => response.json())
+            .catch(this.error);
+    }
+
 
     // Error handling
     private error(error: any) {

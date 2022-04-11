@@ -20,6 +20,7 @@ import { EKalyAdminLivreurComponent } from './e-kaly-admin-livreur/e-kaly-admin-
 import { EKalyAdminCommandesComponent } from './e-kaly-admin-commandes/e-kaly-admin-commandes.component';
 import { LivreurComponent } from './livreur/livreur.component';
 import { BeneficeRestaurantComponent } from './benefice-restaurant/benefice-restaurant.component';
+import { EKalyBeneficeComponent } from './e-kaly-benefice/e-kaly-benefice.component';
 
 
 const routes: Routes = [
@@ -59,6 +60,7 @@ const routes: Routes = [
       {path:'restaurant/:nom',component:EKalyAdminRestaurantPlatComponent},
       {path:'livreur',component:EKalyAdminLivreurComponent},
       {path:'commandes',component:EKalyAdminCommandesComponent},
+      {path:'benefices',component:EKalyBeneficeComponent},
 
     ]
 

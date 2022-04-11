@@ -13,6 +13,7 @@ export class BeneficeRestaurantComponent implements OnInit {
   commandes: Array<ICommandes> = [];
   totalLength:any;
   page:number=1;  
+  benef:any;
   constructor(private commandeServ:CommandesService) { }
 
   ngOnInit(): void {
@@ -23,10 +24,19 @@ export class BeneficeRestaurantComponent implements OnInit {
   }
 
   get_Benefice(id){
+    let sommes=0;
     this.commandeServ.get_Benefices_resto(id)
       .then((result: Array<ICommandes>) => {
         this.commandes = result;
         this.totalLength=result.length;
+        if(this.totalLength>0){
+          for(let i=0;i<result.length;i++)
+          {
+              sommes=sommes+result[i].benefice_resto;
+          }
+        this.benef=sommes;
+          }
+      
        
       });
   }

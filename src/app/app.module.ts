@@ -32,6 +32,7 @@ import { EKalyAdminCommandesComponent } from './e-kaly-admin-commandes/e-kaly-ad
 import { LivreurComponent } from './livreur/livreur.component';
 import { FootersComponent } from './footers/footers.component';
 import { BeneficeRestaurantComponent } from './benefice-restaurant/benefice-restaurant.component';
+import { EKalyBeneficeComponent } from './e-kaly-benefice/e-kaly-benefice.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { BeneficeRestaurantComponent } from './benefice-restaurant/benefice-rest
     EKalyAdminCommandesComponent,
     LivreurComponent,
     FootersComponent,
-    BeneficeRestaurantComponent
+    BeneficeRestaurantComponent,
+    EKalyBeneficeComponent
   ],
   imports: [
     BrowserModule,

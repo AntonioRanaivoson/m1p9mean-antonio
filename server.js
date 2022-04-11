@@ -308,18 +308,7 @@ app.get("/api/plats-update-ekaly/:id", function (req, res) {
 
 
 
-app.get("/api/plats-recherche/:nom_resto/:nom_plat", function (req, res) {
-    var nom=req.params.nom_resto;
-    var plat=req.params.nom_plat;
-    console.log(nom);
-    database.collection('plats').find({nom_resto: nom,nom_plat:plat,visibilite:"oui",deleted:"non"}).toArray(function (error, data) {
-        if (error) {
-            manageError(res, err.message, "Failed to get contacts.");
-        } else {
-            res.status(200).json({ "status":"OK","resto": data});
-        }
-    });
-});
+
 
 
 
@@ -341,6 +330,7 @@ app.post("/api/plats", function (req, res) {
         });
     
 });
+
 
 
 
@@ -647,6 +637,22 @@ app.get("/api/Commandes-benefice-ekaly", function (req, res) {
         }
     });
 });
+
+
+app.get("/api/plats-recherche/:nom_resto/:nom_plat", function (req, res) {
+    var nom=req.params.nom_resto;
+    var plat=req.params.nom_plat;
+    console.log(nom);
+    database.collection('plats').find({nom_resto: nom,nom_plat:plat,visibilite:"oui",deleted:"non"}).toArray(function (error, data) {
+        if (error) {
+            manageError(res, err.message, "Failed to get contacts.");
+        } else {
+            res.status(200).json({ "status":"OK","resto": data});
+        }
+    });
+});
+
+
 
 
 
